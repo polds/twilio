@@ -30,7 +30,7 @@ const (
 
 // TwilioClient struct for holding a http client and user credentials
 type TwilioClient struct {
-	httpclient            *http.Client
+	Httpclient            *http.Client
 	accountSid, authToken string
 }
 
@@ -71,7 +71,7 @@ func (twiClient *TwilioClient) Request(reqStruct interface{}) (
 	httpReq.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	httpReq.Header.Set("Accept", "*/*")
 
-	response, err := twiClient.httpclient.Do(httpReq)
+	response, err := twiClient.Httpclient.Do(httpReq)
 	if err != nil {
 		return twiResp, err
 	}
@@ -111,7 +111,7 @@ func (twiClient *TwilioClient) RequestWithContext(ctx context.Context, reqStruct
 	httpReq.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	httpReq.Header.Set("Accept", "*/*")
 
-	response, err := twiClient.httpclient.Do(httpReq)
+	response, err := twiClient.Httpclient.Do(httpReq)
 	if err != nil {
 		return twiResp, err
 	}

@@ -67,6 +67,14 @@ func (r *Response) Gather(structs ...interface{}) error {
 		default:
 			return fmt.Errorf("non valid verb: '%T'", s)
 		case Gather:
+			g.Input = s.Input
+			g.PartialResultCallback = s.PartialResultCallback
+			g.PartialResultCallbackMethod = s.PartialResultCallbackMethod
+			g.Language = s.Language
+			g.Hints = s.Hints
+			g.ProfanityFilter = s.ProfanityFilter
+			g.SpeechTimeout = s.SpeechTimeout
+			g.BargeIn = s.BargeIn
 			g.FinishOnKey = s.FinishOnKey
 			g.NumDigits = s.NumDigits
 			g.Timeout = s.Timeout

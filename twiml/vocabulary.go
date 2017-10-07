@@ -83,7 +83,7 @@ type Pause struct {
 type Play struct {
 	XMLName xml.Name `xml:"Play"`
 	Loop    int      `xml:"loop,attr,omitempty"`
-	Digits  int      `xml:"digits,attr,omitempty"`
+	Digits  string   `xml:"digits,attr,omitempty"`
 	Url     string   `xml:",chardata"`
 }
 
@@ -140,11 +140,19 @@ type Sip struct {
 }
 
 type Gather struct {
-	XMLName     xml.Name `xml:"Gather"`
-	Action      string   `xml:"action,attr,omitempty"`
-	Method      string   `xml:"method,attr,omitempty"`
-	Timeout     int      `xml:"timeout,attr,omitempty"`
-	FinishOnKey string   `xml:"finishOnKey,attr,omitempty"`
-	NumDigits   int      `xml:"numDigits,attr,omitempty"`
-	Nested      []interface{}
+	XMLName                     xml.Name `xml:"Gather"`
+	Input                       string   `xml:"input,attr,omitempty"`
+	Action                      string   `xml:"action,attr,omitempty"`
+	Method                      string   `xml:"method,attr,omitempty"`
+	Timeout                     uint     `xml:"timeout,attr,omitempty"`
+	FinishOnKey                 string   `xml:"finishOnKey,attr,omitempty"`
+	NumDigits                   uint     `xml:"numDigits,attr,omitempty"`
+	PartialResultCallback       string   `xml:"partialResultCallback,attr,omitempty"`
+	PartialResultCallbackMethod string   `xml:"partialResultCallbackMethod,attr,omitempty"`
+	Language                    string   `xml:"language,attr,omitempty"`
+	Hints                       string   `xml:"hints,attr,omitempty"`
+	ProfanityFilter             *bool    `xml:"profanityFilter,attr,omitempty"`
+	SpeechTimeout               uint     `xml:"speechTimeout,attr,omitempty"`
+	BargeIn                     *bool    `xml:"bargeIn,attr,omitempty"`
+	Nested                      []interface{}
 }
